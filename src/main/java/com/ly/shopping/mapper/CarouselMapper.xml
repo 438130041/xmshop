@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.shopping.dao.CarouselMapper">
+    <select id="carousel_show" resultType="map">
+       select * from xm_carousel
+    </select>
+
+    <select id="carousel_selectID" resultType="com.ly.shopping.pojo.Carousel" parameterType="java.lang.Integer" >
+     select * from xm_carousel
+      where id=#{id}
+    </select>
+
+    <select id="querycarousel" resultType="com.ly.shopping.pojo.Carousel">
+       select * from xm_carousel
+    </select>
+
+    <insert id="carousel_insert" >
+    insert into xm_carousel (title,img,url,flag)
+    values(#{title},#{img},#{url},#{flag})
+  </insert>
+
+    <update id="carousel_update" parameterType="com.ly.shopping.pojo.Carousel" >
+    update  xm_carousel
+    set title=#{title},
+    url=#{url},
+    flag=#{flag}
+     where id=#{id}
+  </update>
+
+    <update id="carousel_updateFlag">
+  update xm_carousel
+  set flag=#{flag}
+   where id=#{id}
+  </update>
+
+    <delete id="carousel_del" parameterType="java.lang.Integer" >
+   delete from xm_carousel
+   where id=#{id}
+  </delete>
+</mapper>

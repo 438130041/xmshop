@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ly.shopping.dao.ShoppingCarMapper">
+    <select id="queryUserCar" resultType="java.lang.String">
+        select id
+        from xm_car
+         where goodsID=#{goodsID} and userID=#{userID}
+
+    </select>
+
+    <select id="findByUid" resultType="com.ly.shopping.pojo.ShoppingCar">
+        select *
+        from xm_car
+        where id = #{uid}
+    </select>
+
+    <select id="queryGoodsInfoID" resultType="com.ly.shopping.pojo.ShoppingCar">
+        select *
+        from xm_car
+         where goodsID=#{goodsID}
+
+    </select>
+
+    <select id="queryAllShoppingCar" resultType="com.ly.shopping.pojo.ShoppingCar">
+        select *
+        from xm_car
+        where userID=#{userID}
+
+    </select>
+
+    <insert id="addShoppingCar"  parameterType="com.ly.shopping.pojo.ShoppingCar">
+    insert into xm_car (userID,goodsID,goodsName,goodsImg,marketPrice,goodsColor,goodsType,goodsCount)
+    values (#{userID},#{goodsID},#{goodsName},#{goodsImg},#{marketPrice},#{goodsColor},#{goodsType},#{goodsCount})
+  </insert>
+
+    <delete id="dropShoppingCae" parameterType="java.lang.Integer">
+        delete
+        from xm_car
+        where goodsID=#{goodsID}
+
+    </delete>
+</mapper>
